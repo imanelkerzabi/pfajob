@@ -1,0 +1,64 @@
+{% extends "dashboardRecreteur.html" %}
+
+{% block myoffre %}
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane show active fade p-3" id="nav-user_offre" role="tabpanel" aria-labelledby="nav-user_offre-tab">
+            <section class="bg-light">
+                <div class="container p-5">
+                    <div class="row">
+                        {% for offres in offre_emploi.items %}
+                        <div class="col-sm-12 col-md-6 col-lg-4 pb-5 d-flex align-items-stretch">
+                            <div class="card lesson" style="width: 300px; height: 300px;">
+                                <div class="card-body d-flex flex-column">
+                                    <h6 class="card-title">
+                                        <a href="{{ url_for('offrerec', offre_title=offres.titre) }}">{{ offres.titre }}</a>
+                                    </h6>
+                                    <div class="card-text">
+                                        <span class="description-truncated">
+                                            {{ offres.description | truncate(100) | striptags }}
+                                        </span>
+                                        <span class="description-full d-none">
+                                            {{ offres.description }}
+                                        </span>
+                                    </div>  
+                                    <p class="card-text mb-0">categorie:
+                                        <a class="text-decoration-none" href="#">{{offres.categories}}</a>
+                                    </p>
+                                    <p class="card-text mb-0">region:
+                                        <a class="text-decoration-none" href="#">{{offres.region}}</a>
+                                    </p>
+                                    <!--<p class="card-text">Société: {{ offres.recruteur.nom_de_societe }}</p>-->
+                                    <span class="text-muted">On: {{offres.date_publication.strftime('%Y-%m-%d')}}</span>
+                                </div>
+                                <div class="position-absolute bottom-0 p-3">
+                                    <a href="{{ url_for('modifieroffre', offre_title=offres.titre) }}"class="btn btn-primary btn-warning text-white">modifier</a>
+                                    <a href="/offres/annuler/{{offres.id_offre}}"class="btn btn-primary btn-warning text-white">supprimer</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <nav class="mt-5" aria-label="...">
+                            <ul class="pagination" style="display: flex; justify-content: flex-end">
+                                {% for page_num in offre_emploi.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                                {% if page_num %}
+                                {% if offre_emploi.page == page_num %}
+                                <li class="page-item active">
+                                    <a href="{{url_for('user_offre', page=page_num)}}" class="page-link">{{page_num}}</a>
+                                </li>
+                                {%else%}
+                                <li class="page-item">
+                                    <a href="{{url_for('user_offre', page=page_num)}}" class="page-link">{{page_num}}</a>
+                                </li>
+                                {%endif%}
+                                {% else %}
+                                ...
+                                {% endif %}
+                                {% endfor %}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+{% endblock myoffre %}

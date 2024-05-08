@@ -1,0 +1,117 @@
+{% extends "dashboardRecreteur.html"%}
+
+{% block profilerec %}
+<div class="container my-5">
+    <!-- Tab contents here -->
+    <div class="tab-content" id="nav-tabContent">
+      <!-- Profile -->
+      {{ ckeditor.load() }}
+      {{ ckeditor.config(name='company_description')}}
+      
+      <div class="tab-pane show active fade p-3" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+        <form action="" method="POST" enctype="multipart/form-data">
+    
+          {{ profile_form.hidden_tag() }}
+
+<fieldset class='form-group'>
+    <legend class='border-bottom mb-4'>Information personnelle</legend>
+
+    <div class="form-group">
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+                {{ profile_form.nom_de_societe.label(class='form-control-label') }}
+
+                {{ profile_form.nom_de_societe(class='form-control') }}
+                
+                {% if profile_form.nom_de_societe.errors %}
+                
+                {% for error in profile_form.nom_de_societe.errors %}
+                
+                <span class="text-danger">{{ error }}</span><br>
+                
+                {% endfor %}
+                
+                {% endif %}        
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              {{ profile_form.email.label(class='form-control-label') }}
+              {{ profile_form.email(class='form-control') }}
+              {% if profile_form.email.errors %}
+              {% for error in profile_form.email.errors %}
+              <span class="text-danger">{{ error }}</span><br>
+              {% endfor %}
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row mb-3">
+          <div class="col-12">
+            <div class="form-group">
+              {{ profile_form.domaine.label(class='form-control-label') }}
+              {{ profile_form.domaine(class='form-control') }}
+              {% if profile_form.domaine.errors %}
+              {% for error in profile_form.domain.errors %}
+              <span class="text-danger">{{ error }}</span><br>
+              {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              {{ profile_form.telephone.label(class='form-control-label') }}
+              {{ profile_form.telephone(class='form-control') }}
+              {% if profile_form.telephone.errors %}
+              {% for error in profile_form.telephone.errors %}
+              <span class="text-danger">{{ error }}</span><br>
+              {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              {{ profile_form.adresse.label(class='form-control-label') }}
+              {{ profile_form.adresse(class='form-control') }}
+              {% if profile_form.adresse.errors %}
+              {% for error in profile_form.adresse.errors %}
+              <span class="text-danger">{{ error }}</span><br>
+              {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row mb-3">
+          <div class="col-12">
+            <div class="form-group">
+              {{ profile_form.company_description.label(class='form-control-label') }}
+              {{ profile_form.company_description(class='form-control') }}
+              {% if profile_form.company_description.errors %}
+              {% for error in profile_form.company_description.errors %}
+              <span class="text-danger">{{ error }}</span><br>
+              {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+     
+
+      <div class="form-group mt-3 row">
+        <div class="col-sm-6 text-center">
+            {{ profile_form.submit(class='btn btn-primary btn-lg btn-warning text-white') }}
+        </div>
+
+{% endblock profilerec %}

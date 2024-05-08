@@ -1,0 +1,200 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mt-auto align-items-center">
+
+    <form action="{{ url_for('inscription_candidat')}} " method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4 text-center pb-2 mt-3" style="font-size: 24px; font-weight: bold;">Inscription Candidat</legend>
+            <div class="form-group">
+                {{ form.nom.label(class='form-control-label ') }}
+                {% if form.nom.errors %}
+                {{ form.nom(class='form-control form-control-lg is-invalid') }}
+                <div class="invalid-feedback">
+                    {% for error in form.nom.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.nom(class='form-control form-control-lg') }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.prenom.label(class='form-control-label') }}
+                {% if form.prenom.errors %}
+                {{ form.prenom(class='form-control form-control-lg form-control-sm is-invalid') }}
+                <div class="invalid-feedback">
+                    {% for error in form.prenom.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.prenom(class='form-control form-control-lg form-control-sm') }}
+                {% endif %}
+            </div>
+            
+            <div class="form-group">
+                {{ form.email.label(class='form-control-label')}}
+                {% if form.email.errors %}
+                {{ form.email(class='form-control form-control-lg is-invalid') }}
+                <div class="invalid-feedback">
+                    {% for error in form.email.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.email(class='form-control form-control-lg') }}
+                {% endif %}
+            </div>
+      <!--------------------------------------->
+      
+            <div class="form-group">
+                {{ form.password.label(class='form-control-label') }}
+                {% if form.password.errors %}
+                {{ form.password(class='form-control form-control-lg is-invalid') }}
+                <div class="invalid-feedback">
+                    {% for error in form.password.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.password(class='form-control form-control-lg') }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.confirm_password.label(class='form-control-label') }}
+                {% if form.confirm_password.errors %}
+                {{ form.confirm_password(class='form-control form-control-lg is-invalid') }}
+                <div class="invalid-feedback">
+                    {% for error in form.confirm_password.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.confirm_password(class='form-control form-control-lg') }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.genre.label(class='form-control-label') }}
+                {% if form.genre.errors %}
+                {{ form.genre(class='form-control form-control-lg is-invalid') }}
+                <div class="invalid-feedback">
+                    {% for error in form.genre.errors %}
+                    <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+                {% else %}
+                {{ form.genre(class='form-control form-control-lg') }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.date_naissance.label(class='form-control-label') }}
+                {% if form.date_naissance.errors %}
+                    {{ form.date_naissance(class='form-control form-control-lg is-invalid', type='date') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.date_naissance.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.date_naissance(class='form-control form-control-lg', type='date') }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.domaine.label(class='form-control-label') }}
+                {% if form.domaine.errors %}
+                    {{ form.domaine(class='form-control form-control-lg is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.domaine.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.domaine(class='form-control form-control-lg') }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.telephone.label(class='form-control-label') }}
+                {% if form.telephone.errors %}
+                    {{ form.telephone(class='form-control form-control-lg is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.telephone.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.telephone(class='form-control form-control-lg') }}
+                {% endif %}
+            </div>
+            
+            <div class="form-group">
+                {{ form.adresse.label(class='form-control-label') }}
+                {% if form.adresse.errors %}
+                    {{ form.adresse(class='form-control form-control-lg is-invalid') }}
+                    <div class="invalid-feedback">
+                        {% for error in form.adresse.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.adresse(class='form-control form-control-lg') }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-6">
+                        {{ form.cv.label(class="form-label") }}
+                        {{ form.cv(class="form-control-file") }}
+                    </div>
+                    <div class="col-md-6">
+                        {{ form.profile_picture.label(class="form-label") }}
+                        {{ form.profile_picture(class="form-control-file") }}
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mt-3  text-center">
+                {{ form.submit(class='btn btn-primary btn-lg btn-warning text-white') }}
+            </div>
+        </fieldset>
+    </form>
+    <div class="border-top pt-3 text-center">
+        <small class="text-muted">
+            Vous avez déjà un compte??
+            <a href="{{ url_for('login') }}" class="ml-2">S'identifier</a>
+        </small>
+    </div>
+</div>
+<style>
+    .border-top {
+        border-top: 1px solid #ccc;
+        padding-top: 1.5rem;
+      }
+      
+      .pt-3 {
+        padding-top: 1.5rem;
+      }
+      
+      .text-center {
+        text-align: center;
+      }
+      
+      .text-muted {
+        color: #888;
+        font-size: 14px;
+        font-size: 18px;
+      }
+      
+      .text-muted a {
+        color: #f9c300;
+        text-decoration: none;
+        font-size: 18px;
+      }
+      
+      .text-muted a:hover {
+        text-decoration: underline;
+      }
+      
+      
+</style>
+{% endblock content %}

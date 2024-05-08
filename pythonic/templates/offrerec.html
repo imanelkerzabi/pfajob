@@ -1,0 +1,62 @@
+{% extends "layoutrec.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <!-- description d'offre -->
+            <div class="col-lg-8">
+                <br>
+                <h2>{{ offrerec.titre }}</h2>
+                <hr>
+                <h3 class="card-text ">Nom de société:
+                    {{ offrerec.recruteur.nom_de_societe}}
+                </h3>
+                <p><strong>Description de l'entreprise:</strong></p>
+                <div class="card">
+                    <div class="card-body">
+                        {{ offrerec.recruteur.company_description | safe }}
+                    </div>
+                </div>
+                <p><strong>Description d'offre:</strong></p>
+                <div class="card">
+                    <div class="card-body">
+                        {{ offrerec.description | safe }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- autres champs -->
+            <div class="col-lg-4">
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p><strong>Région:</strong></p>
+                        <p>{{ offrerec.region }}</p>
+                        <hr>
+                        <p><strong>Diplôme requis:</strong></p>
+                        <p>{{ offrerec.diplome_requis }}</p>
+                        <hr>
+                        <p><strong>Langues requises:</strong></p>
+                        <p>{{ offrerec.langues_requises }}</p>
+                        <hr>
+                        <p><strong>Catégories:</strong></p>
+                        <p>{{ offrerec.categories }}</p>
+                        <hr>
+                        <p><strong>Statut:</strong></p>
+                        <p>{{ offrerec.statut }}</p>
+                        <hr>
+                        <p><strong>Horaire de travail:</strong></p>
+                        <p>{{ offrerec.horaire_travail }}</p>
+                        <hr>
+                        <p><strong>Type de poste:</strong></p>
+                        <p>{{ offrerec.type_de_poste }}</p>
+                        <hr>
+                        <p><strong>Salaire:</strong></p>
+                        <p>{{ offrerec.salaire }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+

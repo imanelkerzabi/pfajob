@@ -1,0 +1,39 @@
+{% extends "dashboardcond.html" %}
+
+{% block content %}
+<br>
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="d-flex justify-content-center">
+        <legend class='border-bottom mb-3 text-center'>liste des candidatures</legend>
+    </div>
+<br>
+        <!-- Basic Bootstrap Table -->
+        <table>
+            <thead>
+             <tr>
+             <th>Titre</th>
+             <th>Région</th>
+             <th>Salaire</th>
+             <th>categories</th>
+             <th>details offre</th>
+                        </tr>
+                    </thead>
+                    <tbody >
+                        {% for candidature in candidatures %}
+                            <tr>
+                                <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
+                                <strong>{{ candidature.offre_emploi.titre }}</strong></td>
+                                <td>{{ candidature.offre_emploi.region }}</td>
+                                <td>{{ candidature.offre_emploi.salaire }}</td>
+                                <td>{{ candidature.offre_emploi.categories }}</td>
+                                <td>
+                                    <a href="{{ url_for('offrec', offre_title=candidature.offre_emploi.titre) }}" class="btn btn-primary btn-warning text-white"  >afficher</a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

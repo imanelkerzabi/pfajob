@@ -1,0 +1,78 @@
+{% extends "layoutrec.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <!-- description d'offre -->
+        <div class="container">
+            <br>
+            <div class="row">
+                <!-- Other fields in the left column -->
+            </div>
+        </div>
+        <div class="py-5">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="{{ image_file }}" class="rounded-circle user-img mb-3" id="mm" alt="" style="width: 150px; height: 150px;">
+                </div>
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="rectangle-bio">
+                                <p><strong>Biographie:</strong></p>
+                                <p>{{ candidat.bio|safe }}</p>
+                            </div>
+                        </div>
+                    </div>
+                <div class="row">
+                        <div class="col-md-12">
+                            <a href="{{ cv }}" class="btn btn-primary btn-lg btn-warning text-white" target="_self">Afficher le CV</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+        <!-- autres champs -->
+        <div class="col-lg-">
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p><strong>Nom:</strong></p>
+                            <p>{{ candidat.nom }}</p>
+                            <hr>
+                            <p><strong>Email:</strong></p>
+                            <p>{{ candidat.email }}</p>
+                            <hr>
+                            <p><strong>Ville:</strong></p>
+                            <p>{{ candidat.adresse }}</p>
+                            <hr>
+                            <p><strong>Genre:</strong></p>
+                            <p>{{ candidat.genre }}</p>
+                            <hr>
+                            <!-- Add more fields here -->
+                        </div>
+                        <div class="col-md-4">
+                            <p><strong>Prenom:</strong></p>
+                            <p>{{ candidat.prenom }}</p>
+                            <hr>
+                            <p><strong>Domaine:</strong></p>
+                            <p>{{ candidat.domaine }}</p>
+                            <hr>
+                            <p><strong>Telephone:</strong></p>
+                            <p>{{ candidat.telephone }}</p>
+                            <hr>
+                            <!-- Add more fields here -->
+                        </div>
+                    </div>
+                    <div class="my-4">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

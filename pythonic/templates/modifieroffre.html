@@ -1,0 +1,137 @@
+{% extends "myoffre.html"%}
+{% block myoffre %}
+<form action="" method="POST" enctype="multipart/form-data">
+        {{ ckeditor.load() }}
+        {{ ckeditor.config(name='description')}}
+        {{ ckeditor.load() }}
+        {{ ckeditor.config(name='competences_requises')}}
+  {{ form.hidden_tag()}}
+  <legend class="border-bottom my-3">Modifier offre</legend>
+ 
+          <fieldset class='form-group'>
+                      <div class="form-group">
+                          <div class="row">
+                              <div class="col-6">
+                                  <div class="form-group">
+                                      {{ form.titre.label(class='form-control-label') }}
+                                      {{ form.titre(class='form-control') }}
+                                      {% if form.titre.errors %}
+                                      {% for error in form.titre.errors %}
+                                      <span class="text-danger">{{ error }}</span><br>
+                                      {% endfor %}
+                                      {% endif %}
+                                  </div>
+                                  <div class="form-group">
+                                      {{ form.description.label(class='form-control-label') }}
+                                      {{form.description(class='form-control') }}
+                                      {% if form.description.errors %}
+                                      {% for error in form.description.errors %}
+                                      <span class="text-danger">{{ error }}</span><br>
+                                      {% endfor %}
+                                      {% endif %}
+                                  </div>
+                                  
+                                  <div class="form-group">
+                                      {{ form.region.label(class='form-control-label') }}
+                                      {{ form.region(class='form-control') }}
+                                      {% if form.region.errors %}
+                                      {% for error in form.region.errors %}
+                                      <span class="text-danger">{{ error }}</span><br>
+                                      {% endfor %}
+                                      {% endif %}
+                                  </div>
+                                 
+                                  <div class="form-group">
+                                      {{ form.diplome_requis.label(class='form-control-label') }}
+                                      {{ form.diplome_requis(class='form-control') }}
+                                      {% if form.diplome_requis.errors %}
+                                      {% for error in form.diplome_requis.errors %}
+                                      <span class="text-danger">{{ error }}</span><br>
+                                      {% endfor %}
+                                      {% endif %}
+                                  </div>
+                                  <div class="form-group">
+                                      {{ form.langues_requises.label(class='form-control-label') }}
+                                      {{ form.langues_requises(class='form-control') }}
+                                      {% if form.langues_requises.errors %}
+                                      {% for error in form.langues_requises.errors %}
+                                      <span class="text-danger">{{ error }}</span><br>
+                                      {% endfor %}
+                                      {% endif %}
+                                  </div>
+                              </div>
+                              <div class="col-6">
+                                  <div class="form-group">
+                                      {{ form.categories.label(class='form-control-label') }}
+                                      {{ form.categories(class='form-control') }}
+                                      {% if form.categories.errors %}
+                                      {% for error in form.categories.errors %}
+                                      <span class="text-danger">{{ error }}</span><br>
+                                      {% endfor %}
+                                      {% endif %}
+                                  </div>
+                                  <div class="form-group">
+                                      {{ form.statut.label(class='form-control-label') }}
+                                      {{ form.statut(class='form-control') }}
+                                      {% if form.statut.errors %}
+                                      {% for error in form.statut.errors %}
+                                      <span class="text-danger">{{ error }}</span><br>
+                                      {% endfor %}
+                                      {% endif %}
+                                  </div>
+                                  <div class="form-group">
+                                      {{ form.horaire_travail.label(class='form-control-label') }}
+                                      {{ form.horaire_travail(class='form-control') }}
+                                      {% if form.horaire_travail.errors %}
+                                      {% for error in form.horaire_travail.errors %}
+                                      <span class="text-danger">{{ error }}</span><br>
+                                      {% endfor %}
+                                      {% endif %}
+                                  </div>
+                                  <div class="form-group">
+                                      {{ form.slug.label(class='form-control-label') }}
+                                      {{ form.slug(class='form-control') }}
+                                      {% if form.slug.errors %}
+                                      {% for error in form.slug.errors %}
+                                      <span class="text-danger">{{ error }}</span><br>
+                                      {% endfor %}
+                                      {% endif %}
+                                  </div>
+                                  <div class="form-group">
+                                      {{ form.type_de_poste.label(class='form-control-label') }}
+                                      {{ form.type_de_poste(class='form-control') }}
+                                      {% if form.type_de_poste.errors %}
+                                      {% for error in form.type_de_poste.errors %}
+                                      <span class="text-danger">{{ error }}</span><br>
+                                      {% endfor %}
+                                      {% endif %}
+                                  </div>
+                                  <div class="form-group">
+                                      {{ form.salaire.label(class='form-control-label') }}
+                                      {{ form.salaire(class='form-control') }}
+                                      {% if form.salaire.errors %}
+                                      {% for error in form.salaire.errors %}
+                                      <span class="text-danger">{{ error }}</span><br>
+                                      {% endfor %}
+                                      {% endif %}
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </fieldset>
+                  <div class="form-group mt-3 row">
+                      <div class="col-sm-6 text-center">
+                          {{ form.submit(class='btn btn-primary btn-lg btn-warning text-white') }}
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+  
+ 
+</form>
+
+
+
+{% endblock myoffre %}

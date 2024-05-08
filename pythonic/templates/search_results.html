@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<section class="bg-light">
+  <div class="container p-5">
+    <div class="row justify-content-center">
+      <div class="col-lg-12 text-center">
+        <h4>Résultats de recherche</h4>
+      </div>
+    </div>
+    <br>
+    <h5> {{ offres.total }} offres trouvées correspondant à vos critères de recherche:</h5>
+
+    <div class="row">
+      {% for offre in offres.items %}       
+       <div class="col-sm-12 col-md-6 col-lg-4 pb-5 d-flex align-items-stretch">
+          <div class="card lesson" style="width: 300px; height: 300px;">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">
+                <a href="{{ url_for('offre', offre_title=offre.titre) }}" class="custom-title">{{ offre.titre }}</a>
+              </h5>
+              <h6 class="card-text ">Nom de societe:
+                {{offre.recruteur.nom_de_societe}}
+            </h6>
+              <div class="card-text">
+                <span class="description-truncated">
+                  {{ offre.description | truncate(90) | striptags }}
+                </span>
+                <span class="description-full d-none">
+                  {{ offre.description }}
+                </span>
+              </div> 
+              <p class="card-text mb-0">categorie:
+                <a class="text-decoration-none" href="#">{{ offre.categories }}
+                </a>
+              </p>
+              <p class="card-text mb-0">region:
+                <a class="text-decoration-none" href="#">{{offre.region}}</a>
+                <br>
+                <span class="text-muted">On: {{offre.date_publication.strftime('%Y-%m-%d')}}</span>
+              </p>
+              <div class="mt-auto">
+                <a class="btn btn-primary btn-warning text-white" href="{{ url_for('offre', offre_title=offre.titre) }}">Afficher plus</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+      <nav class="mt-5" aria-label="...">
+        <ul class="pagination" style="display: flex; justify-content: flex-end">
+            {% for page_num in offres.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+            {% if page_num %}
+            {% if offres.page == page_num %}
+            <li class="page-item active">
+                <a href="{{url_for('search_offres', page=page_num)}}" class="page-link">{{page_num}}</a>
+            </li>
+            {%else%}
+            <li class="page-item">
+                <a href="{{url_for('search_offres', page=page_num)}}" class="page-link">{{page_num}}</a>
+            </li>
+            {%endif%}
+            {% else %}
+            ...
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

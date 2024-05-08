@@ -1,0 +1,43 @@
+<!-- homerec.html -->
+{% extends "layoutrec.html" %}
+
+{% block content %}
+<br>
+<div class="container-xxl flex-grow-1 container-p-y">
+    <div class="d-flex justify-content-center">
+        <legend class='border-bottom mb-3 text-center'>offres d'emploi  du recreteur</legend>
+    </div>
+<br>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Région</th>
+                <th>Catégorie</th>
+                <th>detaille</th>
+                <th>postulation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for offre in offre_emploi %}
+                <tr>
+                    <td>{{ offre.titre }}</td>
+                    <td>{{ offre.region }}</td>
+                    <td>{{ offre.categories }}</td>
+                    <td>
+                        <a href="{{ url_for('offrerec', offre_title=offre.titre) }}" class="btn btn-primary btn-warning text-white"  >afficher</a>
+                    </td>
+                    <td>
+                        <a href="{{ url_for('offre_candidats_profile', offre_id=offre.id_offre) }}" class="btn btn-primary btn-warning text-white">Afficher</a>
+                    </td>
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+  
+{% endblock content %}

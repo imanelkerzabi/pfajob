@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <!-- article contents -->
+            <div class="col-lg-8">
+                <br>
+                <h2>{{ offre.titre }}</h2>
+                <hr>
+                <p><strong>Description d'offre:</strong></p>
+                <div class="card">
+                    <div class="card-body">
+                        {{ offre.description | safe }}
+                    </div>
+                </div>
+                <p><strong>Compétences requises:</strong></p>
+                <div class=" card ">
+                    <div class="card-body">
+                        {{ offre.competences_requise}}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p><strong>Région:</strong></p>
+                        <p>{{ offre.region }}</p>
+                        <hr>
+                        <p><strong>Diplôme requis:</strong></p>
+                        <p>{{ offre.diplome_requis }}</p>
+                        <hr>
+                        <p><strong>Langues requises:</strong></p>
+                        <p>{{ offre.langues_requises }}</p>
+                        <hr>
+                        <p><strong>Catégories:</strong></p>
+                        <p>{{ offre.categories }}</p>
+                        <hr>
+                        <p><strong>Statut:</strong></p>
+                        <p>{{ offre.statut }}</p>
+                        <hr>
+                        <p><strong>Horaire de travail:</strong></p>
+                        <p>{{ offre.horaire_travail }}</p>
+                        <hr>
+                        <p><strong>Type de poste:</strong></p>
+                        <p>{{ offre.type_de_poste }}</p>
+                        <hr>
+                        <p><strong>Salaire:</strong></p>
+                        <p>{{ offre.salaire }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

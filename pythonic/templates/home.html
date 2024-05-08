@@ -1,0 +1,148 @@
+{% extends "layout.html"%}
+{% block content%}
+<section class="bg-dark text-light p-5 p-lg-0 pt-lg-5 text-center text-sm-start">
+    <div class="container">
+        <div class="d-sm-flex align-items-center justify-content-between">
+            <div>
+                <h1 class="mb-10"> Débutez votre recherche d'emploi et  ouvrez <span class="text-warning"> les portes de nouvelles opportunités</span></h1>
+                <p class="lead my-4 p-lead">
+                    
+                 
+                    <form action="{{ url_for('search_offres') }}" class="search-form-area form-cols">
+                      <div class="row justify-content-center form-wrap">
+                        <div class="col-lg-3 form-cols">
+                          <input type="text" class="form-control" name="title" placeholder="Que recherchez-vous ?">
+                        </div>
+                          <div class="col-lg-4 form-cols">
+                            <div class="default-select" id="default-selects">
+                              <select name="region">
+                                <option value="">Sélectionnez une région</option>
+                                <option value="Tanger-Tétouan-Al Hoceïma">Tanger-Tétouan-Al Hoceïma</option>
+                                <option value="Oriental">Oriental</option>
+                                <option value="Fès-Meknès">Fès-Meknès</option>
+                                <option value="Rabat-Salé-Kénitra">Rabat-Salé-Kénitra</option>
+                                <option value="Béni Mellal-Khénifra">Béni Mellal-Khénifra</option>
+                                <option value="Casablanca-Settat">Casablanca-Settat</option>
+                                <option value="Marrakech-Safi">Marrakech-Safi</option>
+                                <option value="Drâa-Tafilalet">Drâa-Tafilalet</option>
+                                <option value="Souss-Massa">Souss-Massa</option>
+                                <option value="Guelmim-Oued Noun">Guelmim-Oued Noun</option>
+                                <option value="Laâyoune-Sakia El Hamra">Laâyoune-Sakia El Hamra</option>
+                                <option value="Dakhla-Oued Ed-Dahab">Dakhla-Oued Ed-Dahab</option>
+                                </select>                   </div>
+                          </div>
+                          <div class="col-lg-3 form-cols">
+                              <div class="default-select" id="default-selects2">
+                                
+                                <select name="categories">
+                                  <option value="">Toutes les catégories</option>
+                                  <option value="Médical">Médical</option>
+                                  <option value="Technologie">Technologie</option>
+                                  <option value="Gouvernement">Gouvernement</option>
+                                  <option value="Éducation">Éducation</option>
+                                  <option value="Finance">Finance</option>
+                                  <option value="Ingénierie">Ingénierie</option>
+                                  <option value="Agriculture">Agriculture</option>
+                                  <option value="Art et design">Art et design</option>
+                                  <option value="Sciences sociales">Sciences sociales</option>
+                                  <option value="Environnement">Environnement</option>
+                                  <option value="Droit">Droit</option>
+                                  <option value="Médias et communication">Médias et communication</option>
+                                  <option value="Marketing et publicité">Marketing et publicité</option>
+                                  <option value="Ressources humaines">Ressources humaines</option>
+                                  <option value="Tourisme et hospitalité">Tourisme et hospitalité</option>
+                                  <option value="Sports et loisirs">Sports et loisirs</option>
+                                  <option value="Transport et logistique">Transport et logistique</option>
+                                  <option value="Recherche scientifique">Recherche scientifique</option>
+                                  <option value="Commerce de détail">Commerce de détail</option>
+                                  <option value="Fabrication">Fabrication</option>
+                                  <option value="E-commerce">E-commerce</option>
+                                  <option value="Télécommunications">Télécommunications</option>
+                                  <option value="Énergie">Énergie</option>
+                                  <option value="Immobilier">Immobilier</option>
+                                  <option value="Consultance">Consultance</option>
+                                  <option value="Alimentation et boissons">Alimentation et boissons</option>
+                                  <option value="Mode et beauté">Mode et beauté</option>
+                                  <option value="Divertissement">Divertissement</option>
+                                  <option value="Musique">Musique</option>
+                                  <option value="Cinéma et télévision">Cinéma et télévision</option>
+                              </select>
+                              
+
+                                  </select>
+                              </div>										
+                          </div>
+                          <div class="col-lg-2 form-cols">
+                            <button type="submit" class="btn btn-info">
+                              <span class="lnr lnr-magnifier"></span> Rechercher
+                              </button>
+                          </div>								
+                      </div>
+                  </form>	
+
+          </div>
+          <img class="img-fluid w-50 d-none d-sm-block" src="{{url_for('static', filename='showcase.svg')}}" alt="">
+      </div>
+  </div>
+</section>
+
+
+
+
+<section class="bg-light">
+  <div class="container p-5">
+      <div class="row mb-5">
+          <div class="col">
+              <h3 class="text-uppercase text-center text-dark">Explorez nos dernières offres d'emploi ! Rejoignez-nous pour de nouvelles opportunités professionnelles.</h3>
+          </div>
+      </div>
+        <div class="row">
+            {% for offres in offre_emploi.items %}
+            <div class="col-sm-12 col-md-6 col-lg-4 pb-5 d-flex align-items-stretch">
+              <div class="card lesson" style="width: 300px; height: 300px;">
+                <div class="card-body d-flex flex-column">
+                  <h6 class="card-title">
+                     <a href="{{ url_for('offre', offre_title=offres.titre) }}">{{ offres.titre }}</a>
+                        </h6>
+                        <h6 class="card-text ">Nom de societe:
+                          {{offres.recruteur.nom_de_societe}}
+                      </h6>
+                        <div class="card-text">
+                            <span class="description-truncated">
+                                {{ offres.description | truncate(90) | striptags }}
+                            </span>
+                            <span class="description-full d-none">
+                                {{ offres.description }}
+                            </span>
+                        </div>  
+                        <p class="card-text mb-0">categorie:
+                            <a class="text-decoration-none" href="#">{{offres.categories}}</a>
+                        </p>
+                        <p class="card-text mb-0">region:
+                            <a class="text-decoration-none" href="#">{{offres.region}}</a>
+                        </p>                       
+
+                    <span class="text-muted">On: {{offres.date_publication.strftime('%Y-%m-%d')}}</span>
+                    <br>
+                    <div class="mt-auto">
+                      <a class="btn btn-primary btn-warning text-white" href="{{ url_for('offre', offre_title=offres.titre) }}">Afficher plus</a>
+                    </div>
+
+                    </div>
+
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="" style="display: flex; justify-content: flex-end">
+          <a href="{{ url_for('offreemploi')}}" class="btn btn-primary btn-lg btn-warning text-white"> More offre &gt&gt&gt</a>
+      </div>
+  </div>
+         </form>
+</section>
+
+    
+
+
+
+{% endblock content%}

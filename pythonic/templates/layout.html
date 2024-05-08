@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+    <title>EmploiRapide - {{title}}</title>
+    {% else %}
+    <title>EmploiRapide</title>
+    {%endif%}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='main.css')}}">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
+        <div class="container">
+            <a href="{{ url_for('home') }}" class="navbar-brand">EmploiRapide</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="{{url_for('apropos')}}" class="nav-link">À propos de nous</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('offreemploi') }}" class="nav-link">offres d'emploi</a>
+                    </li>
+                   
+                   
+                </ul>
+                <!-- User Links -->
+                <ul class="navbar-nav ms-auto">
+                    {% if current_user.is_authenticated %}
+                    <div class="dropdown show">
+                        <button class="btn btn-dark bg-dark dropdown-toggle" type="button" id="dropdownMenuButton1"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Mon Compte
+                        </button>
+                        
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                           
+                                <li class="nav-item">
+                                    <a href="{{ url_for('dashboardcond') }}" class="dropdown-item"> tableau de bord</a>
+
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ url_for('delete_account') }}" class="dropdown-item"> Supprimer mon compte</a>
+
+                                </li>
+                                <li class="nav-item">
+                                <a href="{{ url_for('logout') }}" class="dropdown-item">Se déconnecter</a>
+                            </li>
+                        </ul>
+                        
+
+
+                    {% else %}
+                    <li class="nav-item">
+                    <a href="{{ url_for('inscription_candidat') }}" class="nav-link">Inscription Candidat</a>
+                     </li>
+                   <li class="nav-item">
+                   <a href="{{ url_for('inscription_recruteur') }}" class="nav-link">Inscription Recruteur</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ url_for('login') }}" class="nav-link">Connexion</a>
+                    </li>
+                    {% endif%}
+                </ul>
+            </div>
+        </div>
+    </nav>
+   
+    {% with messages = get_flashed_messages( with_categories=True) %}
+    {% if messages %} 
+    {% for category  ,message in messages %}
+        <div class="alert alert-{{category}} alert-success text-center" role="alert"  >
+                {{message}}
+            
+            {% endfor %}
+            
+              </div>
+        
+    {% endif %}
+{% endwith %} 
+{% block content%} {% endblock %}
+    <!-- footer -->
+
+    <footer class="footer fixed-footer bg-dark text-center text-white-expand-xl">
+        <div class="container py-3">
+          © 2023 EmploiRapide:
+          <a class="text-white" href="https://EmploiRapide.com/">EmploiRapide.com</a>
+        </div>
+      </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

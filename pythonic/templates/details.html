@@ -1,0 +1,37 @@
+{% extends "layoutrec.html" %}
+
+{% block content %}
+<div class="container">
+
+    <br><br>
+    <legend class='border-bottom mb-3'>liste des candidats</legend>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>detaille</th>
+                <!--<th>etat</th>-->
+
+            </tr>
+        </thead>
+        <tbody>
+            {%for candidat in candidats %}
+                <tr>
+                    <td>{{ candidat.nom }}</td>
+                    <td>{{ candidat.prenom }}</td>
+                    <td>{{ candidat.email }}</td>
+                    
+                    <td>
+        <a href="/candidat-profile/{{candidat.id_condidat}}" class="btn btn-primary btn-warning text-white"  >detaille de candidat</a>
+                    </td>
+                   <!-- <td>{{ candidat.etat}}</td>-->
+                    
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

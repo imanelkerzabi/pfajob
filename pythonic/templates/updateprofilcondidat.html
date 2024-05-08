@@ -1,0 +1,173 @@
+{% extends "dashboardcond.html" %}
+
+{% block profile %}
+<div class="container my-5">
+  <!-- Tab contents here -->
+  <div class="tab-content" id="nav-tabContent">
+    <!-- Profile -->
+    {{ ckeditor.load() }}
+      {{ ckeditor.config(name='bio')}}
+    <div class="tab-pane show active fade p-3" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <form action="" method="POST" enctype="multipart/form-data">
+        {{ profile_form.hidden_tag() }}
+        <fieldset class='form-group'>
+          <legend class='border-bottom mb-4'>Information personnelle</legend>
+
+          <div class="col-md-6">
+            <!-- Profile image with circular shape -->
+            <img src="{{ image_file }}" class="rounded-circle user-img row mb-3" id="mm" alt="" style="width: 150px; height: 150px;">
+          </div>
+          
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  {{ profile_form.nom.label(class='form-control-label') }}
+                  {{ profile_form.nom(class='form-control') }}
+                  {% if profile_form.nom.errors %}
+                  {% for error in profile_form.nom.errors %}
+                  <span class="text-danger">{{ error }}</span><br>
+                  {% endfor %}
+                  {% endif %}
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  {{ profile_form.prenom.label(class='form-control-label') }}
+                  {{ profile_form.prenom(class='form-control') }}
+                  {% if profile_form.prenom.errors %}
+                  {% for error in profile_form.prenom.errors %}
+                  <span class="text-danger">{{ error }}</span><br>
+                  {% endfor %}
+                  {% endif %}
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row mb-3">
+              <div class="col-12">
+                <div class="form-group">
+                  {{ profile_form.email.label(class='form-control-label') }}
+                  {{ profile_form.email(class='form-control') }}
+                  {% if profile_form.email.errors %}
+                  {% for error in profile_form.email.errors %}
+                  <span class="text-danger">{{ error }}</span><br>
+                  {% endfor %}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  {{ profile_form.domaine.label(class='form-control-label') }}
+                  {{ profile_form.domaine(class='form-control') }}
+                  {% if profile_form.domaine.errors %}
+                  {% for error in profile_form.domaine.errors %}
+                  <span class="text-danger">{{ error }}</span><br>
+                  {% endfor %}
+                  {% endif %}
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  {{ profile_form.adresse.label(class='form-control-label') }}
+                  {{ profile_form.adresse(class='form-control') }}
+                  {% if profile_form.adresse.errors %}
+                  {% for error in profile_form.adresse.errors %}
+                  <span class="text-danger">{{ error }}</span><br>
+                  {% endfor %}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            {{ profile_form.date_de_naissance.label(class='form-control-label') }}
+            {{ profile_form.date_de_naissance(class='form-control') }}
+            {% if profile_form.date_de_naissance.errors %}
+            {% for error in profile_form.date_de_naissance.errors %}
+            <span class="text-danger">{{ error }}</span><br>
+            {% endfor %}
+            {% endif %}
+          </div>
+          <div class="form-group">
+            {{ profile_form.genre.label(class='form-control-label') }}
+            {{ profile_form.genre(class='form-control') }}
+            {% if profile_form.genre.errors %}
+            {% for error in profile_form.genre.errors %}
+            <span class="text-danger">{{ error }}</span><br>
+            {% endfor %}
+            {% endif %}
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              {{ profile_form.bio.label(class='form-control-label') }}
+              {{ profile_form.bio(class='form-control') }}
+              {% if profile_form.bio.errors %}
+              {% for error in profile_form.bio.errors %}
+              <span class="text-danger">{{ error }}</span><br>
+              {% endfor %}
+              {% endif %}
+            </div>
+          </div>
+          </div>
+          <div class="form-group row mb-3">
+            <div class="col-4">
+              <div class="form-group">
+                {{ profile_form.telephone.label(class_='form-control-label') }}
+                {{ profile_form.telephone(class_='form-control') }}
+              </div>
+            </div>
+            <div class="col-4">
+              <div class="form-group">
+                {{ profile_form.cv.label(class='form-control-label') }}
+                {{ profile_form.cv(class='form-control') }}
+                {% if profile_form.cv.errors %}
+                {% for error in profile_form.cv.errors %}
+                <span class="text-danger">{{ error }}</span><br>
+                {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+           
+            <div class="col-4">
+              <div class="form-group">
+                {{ profile_form.profile_picture.label(class='form-control-label') }}
+                {{ profile_form.profile_picture(class='form-control') }}
+                {% if profile_form.profile_picture.errors %}
+                {% for error in profile_form.profile_picture.errors %}
+                <span class="text-danger">{{ error }}</span><br>
+                {% endfor %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+    
+        
+        </div>
+         
+        </fieldset>
+
+        <div class="form-group mt-3 row">
+            <div class="col-sm-6 text-center">
+                {{ profile_form.submit(class='btn btn-primary btn-lg btn-warning text-white') }}
+            </div>
+            <div class="col-sm-6 text-center">
+                <a href="{{ cv }}" class="btn btn-primary btn-lg btn-warning text-white" target="_self">Afficher le CV</a>
+            </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock profile %}

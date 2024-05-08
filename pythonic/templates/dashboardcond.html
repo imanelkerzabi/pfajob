@@ -1,0 +1,39 @@
+{%extends "layoutcond.html"%}
+{% block content%}
+<!-- Tabs -->
+
+<div class="container my-5">
+    <nav>
+        <div class="nav nav-tabs" id="tablist">
+            <a class="link" href="/dashboard/profilc">
+                <button class="{{'nav-link active' if active_tab=='dashboardCondidat' else 'nav-link'}}" id="nav-profile-tab"
+                    data-bs-toggle="tab" data-bs-target="{{url_for('dashboard_candidat')}}" type="button" role="tab"
+                    aria-controls="nav-profile" aria-selected="true">profil</button>
+            </a>
+
+            <a class="link" href="/change_passwordc">
+                <button class="{{'nav-link active' if active_tab=='change_passwordc' else 'nav-link'}}" id="nav-newLesson-tab"
+                    data-bs-toggle="tab" data-bs-target="{{url_for('dashboard_candidat')}}" type="button" role="tab"
+                    aria-controls="nav-newLesson" aria-selected="true">Sécurité</button>
+            </a>
+            <li class="nav-item">
+                <a href="{{ url_for('mesCandidatures') }}" class="nav-link">mes condidatures</a>
+            </li>
+            
+ 
+           
+           
+        </div>
+    </nav>
+    <!-- Tab contents here -->
+    <div class="tab-content" id="nav-tabContent">
+        <!-- profile -->
+        {% block profile %} {% endblock profile%}
+        <!-- Security -->
+        {% block Security %} {% endblock Security %}
+
+
+
+    </div>
+</div>
+{% endblock content %}

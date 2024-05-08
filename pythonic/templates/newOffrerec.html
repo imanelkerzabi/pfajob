@@ -1,0 +1,137 @@
+{% extends "dashboardRecreteur.html" %}
+
+{% block newOffrerec %}
+<div class="container my-5">
+    <!-- Tab contents here -->
+    <div class="tab-content" id="nav-tabContent">
+        <!-- Profile -->
+        {{ ckeditor.load() }}
+        {{ ckeditor.config(name='description')}}
+        {{ ckeditor.load() }}
+        {{ ckeditor.config(name='competences_requises')}}
+        <div class="tab-pane show active fade p-3" id="nav-ajouteroffre-tab" role="tabpanel" aria-labelledby="nav-ajouteroffre-tab">
+            <form action="/ajouter_offre" method="POST" enctype="multipart/form-data">
+                {{ newOffrerec_form.hidden_tag() }}
+                <fieldset class='form-group'>
+                    <legend class='border-bottom mb-4'>Nouvelle offre</legend>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    {{ newOffrerec_form.titre.label(class='form-control-label') }}
+                                    {{ newOffrerec_form.titre(class='form-control') }}
+                                    {% if newOffrerec_form.titre.errors %}
+                                    {% for error in newOffrerec_form.titre.errors %}
+                                    <span class="text-danger">{{ error }}</span><br>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    {{ newOffrerec_form.description.label(class='form-control-label') }}
+                                    {{newOffrerec_form.description(class='form-control') }}
+                                    {% if newOffrerec_form.description.errors %}
+                                    {% for error in newOffrerec_form.description.errors %}
+                                    <span class="text-danger">{{ error }}</span><br>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                                
+                                <div class="form-group">
+                                    {{ newOffrerec_form.region.label(class='form-control-label') }}
+                                    {{ newOffrerec_form.region(class='form-control') }}
+                                    {% if newOffrerec_form.region.errors %}
+                                    {% for error in newOffrerec_form.region.errors %}
+                                    <span class="text-danger">{{ error }}</span><br>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                                
+                                <div class="form-group">
+                                    {{ newOffrerec_form.diplome_requis.label(class='form-control-label') }}
+                                    {{ newOffrerec_form.diplome_requis(class='form-control') }}
+                                    {% if newOffrerec_form.diplome_requis.errors %}
+                                    {% for error in newOffrerec_form.diplome_requis.errors %}
+                                    <span class="text-danger">{{ error }}</span><br>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    {{ newOffrerec_form.langues_requises.label(class='form-control-label') }}
+                                    {{ newOffrerec_form.langues_requises(class='form-control') }}
+                                    {% if newOffrerec_form.langues_requises.errors %}
+                                    {% for error in newOffrerec_form.langues_requises.errors %}
+                                    <span class="text-danger">{{ error }}</span><br>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    {{ newOffrerec_form.categories.label(class='form-control-label') }}
+                                    {{ newOffrerec_form.categories(class='form-control') }}
+                                    {% if newOffrerec_form.categories.errors %}
+                                    {% for error in newOffrerec_form.categories.errors %}
+                                    <span class="text-danger">{{ error }}</span><br>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    {{ newOffrerec_form.statut.label(class='form-control-label') }}
+                                    {{ newOffrerec_form.statut(class='form-control') }}
+                                    {% if newOffrerec_form.statut.errors %}
+                                    {% for error in newOffrerec_form.statut.errors %}
+                                    <span class="text-danger">{{ error }}</span><br>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    {{ newOffrerec_form.horaire_travail.label(class='form-control-label') }}
+                                    {{ newOffrerec_form.horaire_travail(class='form-control') }}
+                                    {% if newOffrerec_form.horaire_travail.errors %}
+                                    {% for error in newOffrerec_form.horaire_travail.errors %}
+                                    <span class="text-danger">{{ error }}</span><br>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    {{ newOffrerec_form.slug.label(class='form-control-label') }}
+                                    {{ newOffrerec_form.slug(class='form-control') }}
+                                    {% if newOffrerec_form.slug.errors %}
+                                    {% for error in newOffrerec_form.slug.errors %}
+                                    <span class="text-danger">{{ error }}</span><br>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    {{ newOffrerec_form.type_de_poste.label(class='form-control-label') }}
+                                    {{ newOffrerec_form.type_de_poste(class='form-control') }}
+                                    {% if newOffrerec_form.type_de_poste.errors %}
+                                    {% for error in newOffrerec_form.type_de_poste.errors %}
+                                    <span class="text-danger">{{ error }}</span><br>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                                <div class="form-group">
+                                    {{ newOffrerec_form.salaire.label(class='form-control-label') }}
+                                    {{ newOffrerec_form.salaire(class='form-control') }}
+                                    {% if newOffrerec_form.salaire.errors %}
+                                    {% for error in newOffrerec_form.salaire.errors %}
+                                    <span class="text-danger">{{ error }}</span><br>
+                                    {% endfor %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="form-group mt-3 row">
+                    <div class="col-sm-6 text-center">
+                        {{ newOffrerec_form.submit(class='btn btn-primary btn-lg btn-warning text-white') }}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock newOffrerec %}

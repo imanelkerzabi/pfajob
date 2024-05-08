@@ -1,0 +1,50 @@
+{%extends "layoutrec.html"%}
+{% block content%}
+   <!-- Tabs -->
+
+<div class="container my-5">
+    <nav>
+        <div class="nav nav-tabs" id="tablist">
+            <a class="link" href="/dashboard/profilr">
+                <button class="{{'nav-link active' if active_tab=='dashboardRecreteur' else 'nav-link'}}" id="nav-profile-tab"
+                    data-bs-toggle="tab" data-bs-target="{{url_for('modifierprofil_rec')}}" type="button" role="tab"
+                    aria-controls="nav-profile" aria-selected="true">Profile</button>
+            </a>
+
+            <a class="link" href="/change_passwordr">
+                <button class="{{'nav-link active' if active_tab=='change_passwordr' else 'nav-link'}}" id="nav-change_passwordr-tab"
+                    data-bs-toggle="tab" data-bs-target="{{url_for('change_passwordr')}}" type="button" role="tab"
+                    aria-controls="nav-change_passwordr" aria-selected="true">Sécurité</button>
+            </a>
+            <a class="link" href="/ajouter_offre">
+                <button class="{{'nav-link active' if active_tab=='ajouteroffre' else 'nav-link'}}" id="nav-ajouteroffre-tab"
+                    data-bs-toggle="tab" data-bs-target="{{url_for('ajouter_offre')}}" type="button" role="tab"
+                    aria-controls="nav-ajouteroffre" aria-selected="true">Ajouter offre</button>
+            </a>
+            <a class="link" href="/myoffre">
+                <button class="nav-link {{ 'active' if active_tab == 'user_offre' else 'nav-link' }}" id="nav-user_offre-tab"
+                    data-bs-toggle="tab" data-bs-target="{{ url_for('user_offre') }}" type="button" role="tab"
+                    aria-controls="nav-user_offre" aria-selected="true">Mes offres</button>
+            </a>
+            
+          
+          
+        </div>
+    </nav>
+    <!-- Tab contents here -->
+    <div class="tab-content" id="nav-tabContent">
+        <!-- profile -->
+        {% block profilerec %} {% endblock profilerec %}
+        <!-- Sécurité -->
+        {% block Securityrec %} {% endblock Securityrec %}
+        <!-- offre emploi -->
+        {% block newOffrerec %} {% endblock newOffrerec %}
+         <!--  Mes offres -->
+        {% block myoffre %} {% endblock myoffre %}
+
+
+
+    </div>
+</div>
+
+{% endblock content %}

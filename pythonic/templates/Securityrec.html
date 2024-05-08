@@ -1,0 +1,43 @@
+{% extends "dashboardRecreteur.html"%}
+
+{% block Securityrec %}
+<div class="container-xl px-4 mt-4">
+    <!-- Account page navigation-->
+    <form action="" method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <hr class="mt-0 mb-4">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Change password card-->
+                
+                <legend class='border-bottom mb-4'>Changer le mot de passe</legend>
+                <div class="card-body">
+                        <!-- Form Group (current password)-->
+                        <div class="mb-3">
+                            <label class="small mb-1" for="currentPassword">Mot de passe actuel</label>
+                            {{ form.password(class='form-control', id='currentPassword', placeholder='Entrer Mot de passe actuel') }}
+                        </div>
+                        <!-- Form Group (new password)-->
+                        <div class="mb-3">
+                            <label class="small mb-1" for="newPassword">nouveau mot de passe</label>
+                            {{ form.new_password(class='form-control', id='newPassword', placeholder='Entrer nouveau mot de passe') }}
+                        </div>
+                        <!-- Form Group (confirm password)-->
+                        <div class="mb-3">
+                            <label class="small mb-1" for="confirmPassword">Confirmez le mot de passe</label>
+                            {{ form.confirm_password(class='form-control', id='confirmPassword', placeholder='Confirmez le mot de passe') }}
+                        </div>
+                        {{ form.submit(class='btn btn-primary btn-lg btn-warning text-white') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+    
+    
+    
+    
+    
+    
+{% endblock Securityrec %}

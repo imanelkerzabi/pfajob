@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <!-- description d'offre -->
+            <div class="col-lg-8">
+                <br>
+                <h2>{{ offre.titre }}</h2>
+                <div class="col-md-6">
+                    <form action="{{ url_for('postuler', offre_id=offre.id_offre) }}" method="POST">
+
+             <button type="submit" class="btn btn-primary btn-lg btn-warning text-white">Postuler l'offre</button>
+                                </form>
+                            </div>
+                <hr>
+                <h3 class="card-text ">Nom de société:
+                    {{ offre.recruteur.nom_de_societe}}
+                </h3>
+                <p><strong>Description de l'entreprise:</strong></p>
+                <div class="card">
+                    <div class="card-body">
+                        {{ offre.recruteur.company_description | safe }}
+                    </div>
+                </div>
+                <p><strong>Description d'offre:</strong></p>
+                <div class="card">
+                    <div class="card-body">
+                        {{ offre.description | safe }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- autres champs -->
+            <div class="col-lg-4">
+                <br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p><strong>Région:</strong></p>
+                        <p>{{ offre.region }}</p>
+                        <hr>
+                        <p><strong>Diplôme requis:</strong></p>
+                        <p>{{ offre.diplome_requis }}</p>
+                        <hr>
+                        <p><strong>Langues requises:</strong></p>
+                        <p>{{ offre.langues_requises }}</p>
+                        <hr>
+                        <p><strong>Catégories:</strong></p>
+                        <p>{{ offre.categories }}</p>
+                        <hr>
+                        <p><strong>Statut:</strong></p>
+                        <p>{{ offre.statut }}</p>
+                        <hr>
+                        <p><strong>Horaire de travail:</strong></p>
+                        <p>{{ offre.horaire_travail }}</p>
+                        <hr>
+                        <p><strong>Type de poste:</strong></p>
+                        <p>{{ offre.type_de_poste }}</p>
+                        <hr>
+                        <p><strong>Salaire:</strong></p>
+                        <p>{{ offre.salaire }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
